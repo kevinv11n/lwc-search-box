@@ -1,0 +1,51 @@
+{
+  "name": "lwc-search-box",
+  "version": "0.0.0",
+  "author": "Kevin Venkiteswaran @kevinv11n",
+  "main": "dist/app.js",
+  "bugs": "https://github.com/kevinv11n/lwc-search-box/issues",
+  "dependencies": {
+    "@muenzpraeger/lwc-cli-services": "^0.1"
+  },
+  "devDependencies": {
+    "husky": "^1.3.1",
+    "lint-staged": "^8.1.5",
+    "prettier": "^1.17.1"
+  },
+  "engines": {
+    "node": ">=10.0.0"
+  },
+  "homepage": "https://github.com/kevinv11n/lwc-search-box",
+  "husky": {
+    "hooks": {
+      "pre-push": "lint-staged"
+    }
+  },
+  "keywords": [
+    "lwc"
+  ],
+  "license": "MIT",
+  "lint-staged": {
+    "**/*.{html,js,json,yaml,yml,md}": [
+      "prettier --write"
+    ],
+    "**/modules/**": [
+      "eslint"
+    ],
+    "*": [
+      "git add"
+    ]
+  },
+  "repository": "kevinv11n/lwc-search-box",
+  "scripts": {
+    "lint": "eslint ./src/**/*.js",
+    "prettier": "prettier --write '**/*.{css,html,js,json,md,yaml,yml}'",
+    "build": "lwc-cli-services build",
+    "serve": "lwc-cli-services build && lwc-cli-services serve",
+    "test:unit": "lwc-cli-services test",
+    "test:unit:coverage": "lwc-cli-services test --coverage",
+    "test:unit:debug": "lwc-cli-services test --debug",
+    "test:unit:watch": "lwc-cli-services test --watch",
+    "watch": "lwc-cli-services watch"
+  }
+}
