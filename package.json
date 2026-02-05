@@ -1,26 +1,29 @@
 {
   "name": "lwc-search-box",
+  "lwc": {
+    "modules": [
+      {
+        "dir": "src/modules"
+      }
+    ]
+  },
   "version": "0.0.0",
   "author": "Kevin Venkiteswaran @kevinv11n",
   "main": "dist/app.js",
   "bugs": "https://github.com/kevinv11n/lwc-search-box/issues",
   "dependencies": {
-    "lwc-services": "^1"
+    "lwc-services": "^3.2.2"
   },
   "devDependencies": {
-    "husky": "^1.3.1",
-    "lint-staged": "^8.1.5",
-    "prettier": "^1.17.1"
+    "eslint": "^7",
+    "husky": "^9.1.7",
+    "lint-staged": "^16.2.7",
+    "prettier": "^3.8.1"
   },
   "engines": {
     "node": ">=10.0.0"
   },
   "homepage": "https://github.com/kevinv11n/lwc-search-box",
-  "husky": {
-    "hooks": {
-      "pre-push": "lint-staged"
-    }
-  },
   "keywords": [
     "lwc"
   ],
@@ -31,23 +34,21 @@
     ],
     "**/modules/**": [
       "eslint"
-    ],
-    "*": [
-      "git add"
     ]
   },
   "repository": "kevinv11n/lwc-search-box",
   "scripts": {
-    "build": "lwc-services build -m production",
-    "build:development": "lwc-services build",
+    "build": "NODE_OPTIONS=--openssl-legacy-provider lwc-services build -m production",
+    "build:development": "NODE_OPTIONS=--openssl-legacy-provider lwc-services build",
     "lint": "eslint ./src/**/*.js",
     "prettier": "prettier --write '**/*.{css,html,js,json,md,yaml,yml}'",
     "prettier:verify": "prettier --list-different '**/*.{css,html,js,json,md,yaml,yml}'",
-    "serve": "lwc-services serve",
-    "test:unit": "lwc-services test",
-    "test:unit:coverage": "lwc-services test --coverage",
-    "test:unit:debug": "lwc-services test --debug",
-    "test:unit:watch": "lwc-services test --watch",
-    "watch": "lwc-services watch"
+    "serve": "NODE_OPTIONS=--openssl-legacy-provider lwc-services serve",
+    "test:unit": "lwc-services test:unit",
+    "test:unit:coverage": "lwc-services test:unit --coverage",
+    "test:unit:debug": "lwc-services test:unit --debug",
+    "test:unit:watch": "lwc-services test:unit --watch",
+    "watch": "NODE_OPTIONS=--openssl-legacy-provider lwc-services watch",
+    "prepare": "husky"
   }
 }
